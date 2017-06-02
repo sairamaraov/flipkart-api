@@ -7,7 +7,7 @@
   <script>
 function getData() {
 
-/* Creating a nex AJAX request to the flikartapi.php page 
+/* Creating a nex AJAX request to the flikartApi.php page 
 with the query. After recieving this request the PHP page requests the Flipkart Server
 for available data and sends back to this page once the data is received by the PHP page from flipkart server */
 
@@ -29,7 +29,7 @@ document.getElementById("results").innerHTML ="Please wait while loading...";
                 document.getElementById("results").innerHTML = xmlhttp.responseText; //show response on page
             }
         };
-        xmlhttp.open("GET", "flipkartapi.php?q=" + res, true); 
+        xmlhttp.open("GET", "flipkartApi.php?q=" + res, true); 
         xmlhttp.send();
     }
 }
