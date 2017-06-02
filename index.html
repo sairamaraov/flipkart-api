@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+  <script>
+function getData() {
+
+/* Creating a nex AJAX request to the flikartapi.php page 
+with the query. After recieving this request the PHP page requests the Flipkart Server
+for available data and sends back to this page once the data is received by the PHP page from flipkart server */
+
+var str = document.getElementById("search").value;//get value of search field
+var res = encodeURIComponent(str);
+    if (str.length == 0) { //checks if the query is empty  
+        document.getElementById("results").innerHTML = "Please enter a keyword and click search";
+        return;
+    } else {
+        
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+             if (xmlhttp.readyState == 1)
+{
+document.getElementById("results").innerHTML ="Please wait while loading..."; 
+}
+
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("results").innerHTML = xmlhttp.responseText; //show response on page
+            }
+        };
+        xmlhttp.open("GET", "flipkartapi.php?q=" + res, true); 
+        xmlhttp.send();
+    }
+}
+</script>
+</head>
+<body>
+<span  > 
+<input   type="search" id="search" placeholder="enter your search query here" onsearch="getData()" > 
+<input  type="button"  value="search" onclick="getData()">
+</span>
+<p id="results" >Welcome..!<br/>Please enter  your search key word in the search bar to get results from flipkart.<br/>Results will be shown here.</p>
+</body>
+</html>
