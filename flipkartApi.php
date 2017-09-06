@@ -12,7 +12,7 @@ The given url is for results in JSON format.if you want the results to be return
 Replace the 'YOUR ID' & 'YOUR TOKEN' with the id and token provided to you by flipkart.
 */
 $curl = curl_init();
-$surl="https://affiliate-api.flipkart.net/affiliate/search/json?query=".$string."&resultCount=10";//no of results to retreive is set to 10
+$surl="https://affiliate-api.flipkart.net/affiliate/1.0/search.json?query=".$string."&resultCount=10";//no of results to retreive is set to 10
 curl_setopt_array($curl, array(
   CURLOPT_URL => $surl,
   CURLOPT_RETURNTRANSFER => true,
